@@ -1,4 +1,5 @@
 import React from "react";
+import FormInput from "./FormInput";
 
 
 const Form = () => {
@@ -8,16 +9,9 @@ const Form = () => {
     return (
         <form>
             <div>
-            <label>Location</label>
-            <input type="text"></input>
-            </div>
-            <div>
-            <label>Date</label>
-            <input type="date"></input>
-            </div>
-            <div>
-            <label>Amount</label>
-            <input type="number"></input>
+                <FormInput />
+                <FormInput />
+                <FormInput />
             </div>
         </form>
     )
