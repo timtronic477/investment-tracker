@@ -3,9 +3,10 @@ import React, { useState } from "react";
 
 const Form = () => {
   const [initialInvestment, setInitialInvestment] = useState("");
-  const [monthlyInvestment, setMonthlyInvestment] = useState("");
+  const [deposit, setDeposit] = useState("");
   const [term, setTerm] = useState("")
   const [rate, setRate] = useState("")
+  const [compound, setCompound] = useState("")
 
 
 
@@ -13,8 +14,8 @@ const Form = () => {
     setInitialInvestment(event.target.value);
   };
 
-  const monthlyInvestmentHandler = (event) => {
-    setMonthlyInvestment(event.target.value);
+  const depositHandler = (event) => {
+    setDeposit(event.target.value);
   };
 
   const termInvestmentHandler = (event) => {
@@ -25,12 +26,20 @@ const Form = () => {
     setRate(event.target.value)
   }
 
+  const compoundHandler = (event) => {
+    setCompound(event.target.value)
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     
-    console.log(initialInvestment, monthlyInvestment);
+    console.log(initialInvestment, deposit, term, rate, compound);
     setInitialInvestment("");
-    setMonthlyInvestment("");
+    setDeposit("");
+    setTerm("");
+    setRate("");
+
+    // assume rate is monthly
   };
 
   return (
@@ -46,11 +55,11 @@ const Form = () => {
           />
         </div>
         <div>
-          <label>Monthly Investment </label>
+          <label>Deposits</label>
           <input
             type="number"
-            onChange={monthlyInvestmentHandler}
-            value={monthlyInvestment}
+            onChange={depositHandler}
+            value={deposit}
             placeholder="Enter an amount"
           />
         </div>
@@ -60,7 +69,7 @@ const Form = () => {
             type="number"
             onChange={termInvestmentHandler}
             value={term}
-            placeholder="Enter an amount"
+            placeholder="How many years"
           />
         </div>
         <div>
@@ -69,7 +78,16 @@ const Form = () => {
             type="number"
             onChange={rateHandler}
             value={rate}
-            placeholder="Enter an amount"
+            placeholder="Enter a percent"
+          />
+        </div>
+        <div>
+          <label>Compounding Frequency</label>
+          <input
+            type="number"
+            onChange={compoundHandler}
+            value={compound}
+            placeholder="How often yearly"
           />
         </div>
       </div>
